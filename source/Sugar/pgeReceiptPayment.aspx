@@ -371,6 +371,7 @@
                             <asp:DropDownList ID="drpFilter" runat="server" CssClass="ddl" Width="280px" Height="25px"
                                 Visible="true" AutoPostBack="true" TabIndex="7" OnSelectedIndexChanged="drpFilter_SelectedIndexChanged"
                                 OnTextChanged="drpFilter_SelectedIndexChanged">
+                                <asp:ListItem Text="--Select--" Value="A"></asp:ListItem>
                                 <asp:ListItem Text="Againt Loading Voucher" Value="V"></asp:ListItem>
                                 <asp:ListItem Text="Againt Sauda" Value="S"></asp:ListItem>
                             </asp:DropDownList>

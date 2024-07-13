@@ -507,50 +507,50 @@ public partial class Sugar_pgeReceiptPayment : System.Web.UI.Page
         ViewState["mode"] = null;
         ViewState["mode"] = "I";
         this.makeEmptyForm("A");
-        this.TranTypeFilter();
+        //this.TranTypeFilter();
         this.getMaxCode();
         pnlPopupDetails.Style["display"] = "none";
     }
 
-    private void TranTypeFilter()
-    {
-        try
-        {
-            trntype = drpTrnType.SelectedValue;
-            if (trntype == "BP" || trntype == "CP")
-            {
-                drpFilter.Visible = true;
-                drpFilter.Items.Clear();
-                drpFilter.Items.Add(new ListItem("--Select--", "A"));
-                drpFilter.Items.Add(new ListItem("Against Transport Advance", "T"));
-                txtVoucherNo.Enabled = false;
-                txtvoucherType.Enabled = false;
-                btntxtVoucherNo.Enabled = false;
+    //private void TranTypeFilter()
+    //{
+    //    try
+    //    {
+    //        trntype = drpTrnType.SelectedValue;
+    //        if (trntype == "BP" || trntype == "CP")
+    //        {
+    //            drpFilter.Visible = true;
+    //            drpFilter.Items.Clear();
+    //            drpFilter.Items.Add(new ListItem("--Select--", "A"));
+    //            drpFilter.Items.Add(new ListItem("Against Transport Advance", "T"));
+    //            txtVoucherNo.Enabled = false;
+    //            txtvoucherType.Enabled = false;
+    //            btntxtVoucherNo.Enabled = false;
 
-            }
-            else
-            {
-                if (trntype == "BR")
-                {
-                    drpFilter.Visible = true;
-                    drpFilter.Items.Clear();
-                    drpFilter.Items.Add(new ListItem("Against Loading Voucher", "V"));
-                    drpFilter.Items.Add(new ListItem("Against Sauda", "S"));
-                    txtVoucherNo.Enabled = true;
-                    txtvoucherType.Enabled = true;
-                    btntxtVoucherNo.Enabled = true;
-                }
-                else
-                {
-                    drpFilter.Visible = false;
-                }
-            }
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
+    //        }
+    //        else
+    //        {
+    //            if (trntype == "BR")
+    //            {
+    //                drpFilter.Visible = true;
+    //                drpFilter.Items.Clear();
+    //                drpFilter.Items.Add(new ListItem("Against Loading Voucher", "V"));
+    //                drpFilter.Items.Add(new ListItem("Against Sauda", "S"));
+    //                txtVoucherNo.Enabled = true;
+    //                txtvoucherType.Enabled = true;
+    //                btntxtVoucherNo.Enabled = true;
+    //            }
+    //            else
+    //            {
+    //                drpFilter.Visible = false;
+    //            }
+    //        }
+    //    }
+    //    catch (Exception)
+    //    {
+    //        throw;
+    //    }
+    //}
     #endregion
 
     #region [btnEdit_Click]
@@ -563,33 +563,34 @@ public partial class Sugar_pgeReceiptPayment : System.Web.UI.Page
         this.makeEmptyForm("E");
         txtdoc_no.Enabled = false;
         trntype = drpTrnType.SelectedValue;
-        if (trntype == "BP" || trntype == "CP")
-        {
-            drpFilter.Visible = true;
-            drpFilter.Items.Clear();
-            drpFilter.Items.Add(new ListItem("--Select--", "A"));
-            drpFilter.Items.Add(new ListItem("Against Transport Advance", "T"));
-            txtVoucherNo.Enabled = false;
-            txtvoucherType.Enabled = false;
-            btntxtVoucherNo.Enabled = false;
-        }
-        else
-        {
-            if (trntype == "BR")
-            {
-                drpFilter.Visible = true;
-                drpFilter.Items.Clear();
-                drpFilter.Items.Add(new ListItem("Against Loading Voucher", "V"));
-                drpFilter.Items.Add(new ListItem("Against Sauda", "S"));
-                txtVoucherNo.Enabled = true;
-                txtvoucherType.Enabled = true;
-                btntxtVoucherNo.Enabled = true;
-            }
-            else
-            {
-                drpFilter.Visible = false;
-            }
-        }
+        drpFilter.Visible = true;
+        //if (trntype == "BP" || trntype == "CP")
+        //{
+        //    drpFilter.Visible = true;
+        //    drpFilter.Items.Clear();
+        //    drpFilter.Items.Add(new ListItem("--Select--", "A"));
+        //    drpFilter.Items.Add(new ListItem("Against Transport Advance", "T"));
+        //    txtVoucherNo.Enabled = false;
+        //    txtvoucherType.Enabled = false;
+        //    btntxtVoucherNo.Enabled = false;
+        //}
+        //else
+        //{
+        //    if (trntype == "BR")
+        //    {
+        //        drpFilter.Visible = true;
+        //        drpFilter.Items.Clear();
+        //        drpFilter.Items.Add(new ListItem("Against Loading Voucher", "V"));
+        //        drpFilter.Items.Add(new ListItem("Against Sauda", "S"));
+        //        txtVoucherNo.Enabled = true;
+        //        txtvoucherType.Enabled = true;
+        //        btntxtVoucherNo.Enabled = true;
+        //    }
+        //    else
+        //    {
+        //        drpFilter.Visible = false;
+        //    }
+        //}
     }
     #endregion
 
@@ -1287,7 +1288,7 @@ public partial class Sugar_pgeReceiptPayment : System.Web.UI.Page
     {
         try
         {
-            this.TranTypeFilter();
+            //this.TranTypeFilter();
             lblNo.Text = Server.HtmlDecode(gr.Cells[16].Text);
             lblID.Text = Server.HtmlDecode(gr.Cells[2].Text);
             txtACCode.Text = Server.HtmlDecode(gr.Cells[3].Text);
@@ -1295,7 +1296,7 @@ public partial class Sugar_pgeReceiptPayment : System.Web.UI.Page
             txtUnit_Code.Text = Server.HtmlDecode(gr.Cells[5].Text);
             lblUnitName.Text = Server.HtmlDecode(gr.Cells[6].Text);
             string selectedValue = Server.HtmlDecode(gr.Cells[14].Text);
-            drpFilter.SelectedValue = selectedValue;
+            drpFilter.SelectedValue = Server.HtmlDecode(gr.Cells[14].Text);
             if (Server.HtmlDecode(gr.Cells[7].Text) != "0")
             {
                 lblHead.Text = "Voucher No";
@@ -1402,6 +1403,9 @@ public partial class Sugar_pgeReceiptPayment : System.Web.UI.Page
             e.Row.Cells[11].ControlStyle.Width = Unit.Percentage(10);
             e.Row.Cells[12].ControlStyle.Width = Unit.Percentage(10);
             e.Row.Cells[13].ControlStyle.Width = Unit.Percentage(25);
+            e.Row.Cells[14].ControlStyle.Width = Unit.Percentage(10);
+            e.Row.Cells[15].ControlStyle.Width = Unit.Percentage(10);
+            e.Row.Cells[16].ControlStyle.Width = Unit.Percentage(10);
 
             e.Row.Cells[0].Style["overflow"] = "hidden";
             e.Row.Cells[1].Style["overflow"] = "hidden";
@@ -1440,9 +1444,9 @@ public partial class Sugar_pgeReceiptPayment : System.Web.UI.Page
                     e.Row.Cells[13].ToolTip = s;
                 }
             }
-            e.Row.Cells[14].Visible = false;
-            e.Row.Cells[15].Visible = false;
-            e.Row.Cells[16].Visible = false;
+            //e.Row.Cells[14].Visible = false;
+            //e.Row.Cells[15].Visible = false;
+            //e.Row.Cells[16].Visible = false;
 
         }
         catch
