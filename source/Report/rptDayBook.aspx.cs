@@ -169,7 +169,7 @@ public partial class Report_rptDayBook : System.Web.UI.Page
 
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
-            string qry = "select * from [dbo].[qryGledgernew] where [COMPANY_CODE]=" + Convert.ToInt32(Session["Company_Code"].ToString())
+            string qry = "select *,convert(varchar(10),DOC_DATE,103) as DOC_DATE1 from [dbo].[qryGledgernew] where [COMPANY_CODE]=" + Convert.ToInt32(Session["Company_Code"].ToString())
                 + " and [DRCR]='C' and [DOC_DATE]='" + date + "' and AC_CODE<>1 order by [DOC_DATE],[AC_CODE]";
             ds = clsDAL.SimpleQuery(qry);
 
@@ -192,7 +192,7 @@ public partial class Report_rptDayBook : System.Web.UI.Page
                             dtCredit.Rows.Add(dr);
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
-                                string dtDate = DateTime.Parse(dt.Rows[i]["DOC_DATE"].ToString(), System.Globalization.CultureInfo.CreateSpecificCulture("en-GB")).ToString("yyyy.MM.dd");
+                                string dtDate = DateTime.Parse(dt.Rows[i]["DOC_DATE1"].ToString(), System.Globalization.CultureInfo.CreateSpecificCulture("en-GB")).ToString("yyyy.MM.dd");
 
                                 //if (dtDate == date)
                                 if (dt.Rows[i]["AC_CODE"].ToString() == uniqueAcCode)
@@ -261,7 +261,7 @@ public partial class Report_rptDayBook : System.Web.UI.Page
             string accode = "";
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
-            string qry = "select * from [dbo].[qryGledgernew] where [COMPANY_CODE]=" + Convert.ToInt32(Session["Company_Code"].ToString())
+            string qry = "select *,convert(varchar(10),DOC_DATE,103) as DOC_DATE1 from [dbo].[qryGledgernew] where [COMPANY_CODE]=" + Convert.ToInt32(Session["Company_Code"].ToString())
                 + " and [DRCR]='D' and [DOC_DATE]='" + date + "' and AC_CODE<>1 order by [DOC_DATE],[AC_CODE]";
             ds = clsDAL.SimpleQuery(qry);
             dsDebit = new DataSet();
@@ -283,7 +283,7 @@ public partial class Report_rptDayBook : System.Web.UI.Page
                             dtDebit.Rows.Add(dr);
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
-                                string dtDate = DateTime.Parse(dt.Rows[i]["DOC_DATE"].ToString(), System.Globalization.CultureInfo.CreateSpecificCulture("en-GB")).ToString("yyyy.MM.dd");
+                                string dtDate = DateTime.Parse(dt.Rows[i]["DOC_DATE1"].ToString(), System.Globalization.CultureInfo.CreateSpecificCulture("en-GB")).ToString("yyyy.MM.dd");
                                 if (dt.Rows[i]["AC_CODE"].ToString() == uniqueAcCode)
                                 {
                                     DataRow dr2 = dtDebitdetail.NewRow();

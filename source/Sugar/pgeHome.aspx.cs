@@ -545,7 +545,7 @@ public partial class pgeHome : System.Web.UI.Page
         try
         {
             sqlconn.Open();
-            sqlcmd = new SqlCommand("backup database AccowebHingalaj to disk='" + backupDestination + "\\" + "AccowebHingalaj" + DateTime.Now.ToString("ddMMyyyy_HHmmss_") + user + ".Bak'", sqlconn);
+            sqlcmd = new SqlCommand("backup database AccowebHinglaj to disk='" + backupDestination + "\\" + "AccowebHingalaj" + DateTime.Now.ToString("ddMMyyyy_HHmmss_") + user + ".Bak'", sqlconn);
             sqlcmd.ExecuteNonQuery();
             //Close connection
             sqlconn.Close();
